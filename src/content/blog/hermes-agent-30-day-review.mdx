@@ -1,0 +1,112 @@
+---
+title: "The Only AI Agent That Actually Remembers Things"
+description: "30 days with Hermes Agent from Nous Research — and why the memory system actually matters for people running multiple AI tools."
+publishedAt: "2026-05-06"
+tags: ["ai", "hermes", "agents", "open-source", "productivity"]
+image: "/blog/images/hermes-setup.jpg"
+---
+
+Okay so most AI assistants have the memory of a goldfish.
+
+You spend context explaining what you're working on, how you like things structured, what you've already tried. Close the chat. Next day, gone. Start over.
+
+This isn't a complaint about AI capability — the models are genuinely impressive. It's a complaint about persistence. Every conversation starts from zero. Every session is a reset.
+
+Hermes Agent from Nous Research claims to fix that. The pitch: it's the only agent with a built-in learning loop. It doesn't just answer questions — it creates skills from experience, improves them during use, and holds memory across sessions.
+
+I've been running it for 30 days. Here's what actually happened.
+
+![Hermes Agent initial setup — clean terminal interface with successful initialization](https://nikopastore.com/blog/images/hermes-setup.jpg)
+
+---
+
+## Setup: Easier Than I Expected
+
+One line install:
+```
+curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+```
+
+Runs on my mac mini. (A $5 VPS works too if you want something even cheaper.) Basic ChatGPT subscription works — not just expensive API plans. Connected to both Telegram and Discord in under 10 minutes total. The `hermes gateway setup` command walks you through it. Pick your platform, authenticate, done.
+
+First two weeks felt normal. Answered questions. Ran some tasks. Nothing that made me think "okay this is actually different."
+
+---
+
+## The Vault: This Is What Changed Things
+
+The part that flipped it for me: I used Claude Code on my Windows machine to build an Obsidian vault that holds my whole project memory. Gave Hermes access to it.
+
+![Obsidian vault — interconnected project memory that multiple AI agents can read from and write to](https://nikopastore.com/blog/images/hermes-obsidian.jpg)
+
+Now when I spin up different agents for different tasks — they all write to the same brain. Nobody starts from zero.
+
+Different agents, different projects, same memory. If I have a coding agent working on project A, it writes its findings to the vault. Then when I'm on Telegram asking Hermes about project B, it can reference what the coding agent learned about project A.
+
+Before this setup: every new agent task meant re-explaining everything. Every context switch was a reset button.
+
+Now it's all there.
+
+---
+
+## Week 3: When It Clicked
+
+Requests that used to need 3-4 clarifying exchanges started resolving in 1-2. It had learned the shape of what I was asking.
+
+Small stuff. Project names. Preferred model. The way I phrase certain requests. But it accumulated.
+
+And it started creating skills on its own. After a few runs of a particular task type, Hermes had built a reusable skill for it. Not because I asked. Because it noticed the pattern and saved it.
+
+## Week 4: Real Work
+
+Gave it a real job: research a technical topic, spin up parallel subagents to cover different angles, compile a full writeup.
+
+Would have taken me half a day of my own time. It ran in 20 minutes while I did something else.
+
+The subagent system is worth explaining: Hermes can spawn isolated child agents for parallel workstreams. Each one has its own context, restricted toolsets, own terminal session. By default you get 3 running concurrently. When they finish, they report back and Hermes compiles the results.
+
+That's not just memory. That's delegation. It's running a mini-team from Telegram.
+
+![Multi-agent workflow — Telegram triggers Hermes, which spawns parallel subagents that report back and sync to the shared vault](https://nikopastore.com/blog/images/hermes-multitask.jpg)
+
+---
+
+## What Makes This Different From Other Agents
+
+Here's the honest comparison:
+
+Most AI agents are static. Same capability day 1 as day 90. The model might get updated by the provider, but the agent itself doesn't learn anything about *you*.
+
+Hermes has a Skills System that evolves. It creates skills from experience. It improves skills during use. It uses FTS5 cross-session search to find relevant context from past conversations and LLM summarization to compress that context into usable memory.
+
+There's also Honcho dialectic user modeling — it builds a model of who you are, your preferences, your communication style, what you tend to ask about.
+
+All of that compounds. The longer it runs, the more it knows about you.
+
+---
+
+## The Catch
+
+You have to use it consistently.
+
+Open it twice a month and it's just a chatbot with extra steps. The compounding only works if you give it time to learn.
+
+Also: smaller community than Anthropic or OpenAI. Documentation is solid but not as polished as enterprise products. Some comfort with CLI helps.
+
+The people who get the most out of Hermes are probably developers and power users who want an always-on agent that learns their specific workflow, runs on cheap infrastructure, and doesn't require a GPU.
+
+---
+
+## Who This Is For
+
+If you've been running different AI tools for different tasks and losing context every time you switch — the vault approach with Hermes might be what you're missing.
+
+Runs on cheap hardware. Works with basic ChatGPT subscription. Learns your specific workflow over time.
+
+Most AI tools are exactly as capable on day 30 as they were on day 1.
+
+This isn't.
+
+---
+
+*What's your experience with AI agent memory? Have you found anything that actually compounds over time? Drop it in the comments — I read them.*
